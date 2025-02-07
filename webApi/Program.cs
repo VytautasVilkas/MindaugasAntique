@@ -36,8 +36,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "MindaugasAntique.lt",
-            ValidAudience = "MindaugasAntique.lt",
+            ValidIssuer = "https://mindaugasantique.cloud",
+            ValidAudience = "https://MindaugasAntique.lt",
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecretKey))
             // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Your32ByteSecureKeyWithExactLength!"))
         };
@@ -72,12 +72,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://MindaugasAntique.lt", "http://46.202.191.24:5173")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); 
     });
 });
+
 
 
 // builder.Services.AddHttpsRedirection(options =>
@@ -97,6 +98,22 @@ builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5000); 
 });
+// builder.WebHost.ConfigureKestrel(options =>
+// {
+//     options.ListenAnyIP(443, listenOptions =>
+//     {
+//         listenOptions.UseHttps(); 
+//     });
+// });
+// builder.WebHost.ConfigureKestrel(options =>
+// {
+//     options.ListenAnyIP(443, listenOptions =>
+//     {
+//         listenOptions.UseHttps("/etc/letsencrypt/live/mindaugasantique.cloud/fullchain.pem",
+//                               "/etc/letsencrypt/live/mindaugasantique.cloud/privkey.pem");
+//     });
+// });
+
 var app = builder.Build();
 app.Use(async (context, next) =>
 {
@@ -113,6 +130,7 @@ if (app.Environment.IsDevelopment())
 // Middleware
 app.UseForwardedHeaders();
 app.UseCors("DefaultPolicy");
+// app.UseHttpsRedirection(); 
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

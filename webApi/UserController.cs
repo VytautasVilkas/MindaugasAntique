@@ -56,8 +56,8 @@ public class UserController : ControllerBase
                         };
 
                         var token = new JwtSecurityToken(
-                            issuer: "MindaugasAntique.lt",
-                            audience: "MindaugasAntique.lt",
+                            issuer: "https://mindaugasantique.cloud",
+                            audience: "https://MindaugasAntique.lt",
                             claims: claims,
                             expires: expiresAt,
                             signingCredentials: credentials
@@ -928,8 +928,8 @@ public class UserController : ControllerBase
                         };
 
                         var token = new JwtSecurityToken(
-                            issuer: "MindaugasAntique.lt",
-                            audience: "MindaugasAntique.lt",
+                            issuer: "https://mindaugasantique.cloud",
+                            audience: "https://MindaugasAntique.lt",
                             claims: claims,
                             expires: DateTime.UtcNow.AddHours(1),
                             signingCredentials: credentials
@@ -1450,8 +1450,8 @@ public class UserController : ControllerBase
                         };
 
                         var token = new JwtSecurityToken(
-                            issuer: "MindaugasAntique.lt",
-                            audience: "MindaugasAntique.lt",
+                            issuer: "https://mindaugasantique.cloud",
+                            audience: "https://MindaugasAntique.lt",
                             claims: claims,
                             expires: DateTime.UtcNow.AddMinutes(15),
                             signingCredentials: credentials
