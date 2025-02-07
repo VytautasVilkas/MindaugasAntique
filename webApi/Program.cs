@@ -72,7 +72,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173","http://your-vps-ip","https://your-domain.com") 
+        policy.WithOrigins("*") 
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); 
