@@ -2,13 +2,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy project files and restore dependencies
-COPY *.csproj ./
+# Copy solution and project files
+COPY webApi/*.csproj ./webApi/
+WORKDIR /app/webApi
 RUN dotnet restore
 
 # Copy everything and publish in Release mode
-COPY . ./
-RUN dotnet publish -c Release -o /app/published
+COPY webApi/. .
+RUN dotnet publish -c Release -o /app/published --no-self-contained
 
 # Use the smaller .NET runtime image for production
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
@@ -22,5 +23,6 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 5000
 
 # Run the application
-ENTRYPOINT ["dotnet", "MindaugasAntique.dll"]
+ENTRYPOINT ["dotnet", "/app/MindaugasAntique.dll"]
+
 
