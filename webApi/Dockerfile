@@ -2,13 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy project files and restore dependencies
-COPY webApi/*.csproj ./  
+# Copy the project file and restore dependencies
+COPY webApi/webApi.csproj ./webApi/
 WORKDIR /app/webApi
 RUN dotnet restore
 
-# Copy everything from webApi folder and publish in Release mode
-COPY webApi/ ./
+# Copy the rest of the application files
+COPY webApi/ ./  
 RUN dotnet publish -c Release -o /app/published --no-self-contained
 
 # Use the .NET runtime image for production
