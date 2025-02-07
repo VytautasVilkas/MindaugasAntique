@@ -8,7 +8,8 @@ WORKDIR /app/webApi
 RUN dotnet restore
 
 # Copy everything and publish in Release mode
-COPY webApi/. .
+COPY ./webApi ./webApi
+
 RUN dotnet publish -c Release -o /app/published --no-self-contained
 
 # Use the smaller .NET runtime image for production
