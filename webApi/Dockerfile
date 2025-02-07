@@ -7,14 +7,14 @@ COPY webApi/webApi.csproj ./webApi/
 WORKDIR /app/webApi
 RUN dotnet restore
 
-# Copy the rest of the application files
+# Copy everything from webApi folder and publish
 COPY webApi/ ./  
 RUN dotnet publish -c Release -o /app/published --no-self-contained
 
 # Use the .NET runtime image for production
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/published .
+COPY --from=build /app/published /app/
 
 # Set environment to Production
 ENV ASPNETCORE_ENVIRONMENT=Production
@@ -23,6 +23,7 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 5000
 
 # Run the application
-ENTRYPOINT ["dotnet", "webApi.dll"]
+ENTRYPOINT ["dotnet", "/app/webApi.dll"]
+
 
 
