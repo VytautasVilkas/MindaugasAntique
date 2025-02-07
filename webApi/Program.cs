@@ -72,29 +72,32 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173") // Update to match your frontend URL
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173","http://your-vps-ip","https://your-domain.com") 
               .AllowAnyMethod()
               .AllowAnyHeader()
-              .AllowCredentials(); // Allow cookies
+              .AllowCredentials(); 
     });
     
 });
 
-// HTTPS redirection
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.HttpsPort = 7279;
-});
 
+// builder.Services.AddHttpsRedirection(options =>
+// {
+//     options.HttpsPort = 7279;
+// });
+
+// builder.WebHost.ConfigureKestrel(options =>
+// {
+//     options.ListenAnyIP(7279, listenOptions =>
+//     {
+//         listenOptions.UseHttps(); 
+//     });
+//     options.ListenAnyIP(5130); 
+// });
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(7279, listenOptions =>
-    {
-        listenOptions.UseHttps(); // HTTPS endpoint
-    });
-    options.ListenAnyIP(5130); // HTTP endpoint for development
+    options.ListenAnyIP(5000); 
 });
-
 var app = builder.Build();
 app.Use(async (context, next) =>
 {
@@ -111,7 +114,6 @@ if (app.Environment.IsDevelopment())
 // Middleware
 app.UseForwardedHeaders();
 app.UseCors("DefaultPolicy");
-app.UseHttpsRedirection(); 
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
