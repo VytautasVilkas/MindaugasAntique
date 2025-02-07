@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&family=Saira+Stencil+One&family=Orbitron&family=Poiret+One&family=Fascinate+Inline&family=Fredoka+One&display=swap');
+
+/* Your Tailwind imports or other styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Add to index.css or another global CSS file */
+/* Smooth underline animation */
+.underline-hover {
+  display: inline-flex; /* Keeps the button layout inline */
+  position: relative;   /* Allows the pseudo-element to work */
+  overflow: hidden;     /* Prevents unexpected visual glitches */
+}
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Align underline to bottom */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+.underline-hover:hover::after {
+  width: 100%;
+}
+
