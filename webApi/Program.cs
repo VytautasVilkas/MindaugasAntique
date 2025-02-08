@@ -72,7 +72,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("https://MindaugasAntique.lt", "http://46.202.191.24:5173")
+        policy.WithOrigins("https://MindaugasAntique.lt", "https://localhost:5173")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); 
@@ -98,21 +98,7 @@ builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5000); 
 });
-// builder.WebHost.ConfigureKestrel(options =>
-// {
-//     options.ListenAnyIP(443, listenOptions =>
-//     {
-//         listenOptions.UseHttps(); 
-//     });
-// });
-// builder.WebHost.ConfigureKestrel(options =>
-// {
-//     options.ListenAnyIP(443, listenOptions =>
-//     {
-//         listenOptions.UseHttps("/etc/letsencrypt/live/mindaugasantique.cloud/fullchain.pem",
-//                               "/etc/letsencrypt/live/mindaugasantique.cloud/privkey.pem");
-//     });
-// });
+
 
 var app = builder.Build();
 app.Use(async (context, next) =>
