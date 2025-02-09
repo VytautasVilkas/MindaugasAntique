@@ -87,7 +87,7 @@ public class UserController : ControllerBase
                             }
                         
                         var jwtToken =  GenerateResetToken(user, resetSession, expiresAt);
-                        var resetLink = $"https://localhost:5173/slaptazodzio-pakeitimas?token={Uri.EscapeDataString(jwtToken)}";
+                        var resetLink = $"https://mindaugasantique.cloud/slaptazodzio-pakeitimas?token={Uri.EscapeDataString(jwtToken)}";
 
                         await SendPasswordResetEmailAsync(request.Email, resetLink);
                     }else {
@@ -898,7 +898,7 @@ public class UserController : ControllerBase
                                                 }
                                                 string verSessionID = CreateVerificationSession(USER_ID);
                                                 string token = GenerateVerificationToken(verSessionID);
-                                                SendVerificationEmail(request.Email, token, "https://localhost:5173");
+                                                SendVerificationEmail(request.Email, token, "https://mindaugasantique.cloud");
                                                 return Ok(new { message = "Registracija sekminga" });
                                             }
                                             catch (Exception ex)
@@ -1214,7 +1214,7 @@ public class UserController : ControllerBase
                                     string verSessionID = CreateVerificationSession(userId);
                                     string token = GenerateVerificationToken(verSessionID);
 
-                                    SendVerificationEmail(request.Email, token, "https://localhost:5173");
+                                    SendVerificationEmail(request.Email, token, "https://mindaugasantique.cloud");
 
                                     return Ok(new { message = "Patvirtinimo el. laiškas išsiųstas iš naujo." });
                                 }
