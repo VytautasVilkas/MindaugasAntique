@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
-import mainMenuImage from "../assets/mainmenu.jpeg";
+import mainMenuImage from "../assets/mainMenu.jpeg";
 
 function Home() {
   const [isTypingDone, setIsTypingDone] = useState(false);
