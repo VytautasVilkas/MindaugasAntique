@@ -72,7 +72,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("https://MindaugasAntique.lt", "https://localhost:5173")
+        policy.WithOrigins("https://MindaugasAntique.lt", "http://46.202.191.24:3000","https://MindaugasAntique.cloud")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); 
