@@ -1056,6 +1056,7 @@ public class UserController : ControllerBase
                         message.From.Add(new MimeKit.MailboxAddress("MindaugasAntique", "mindaugasantique@gmail.com"));
                         message.To.Add(new MimeKit.MailboxAddress("", email));
                         message.Subject = "El.pašto patvirtinimas";
+                        Console.WriteLine($"Google Secret Code: {_secretManager.GetGoogleSecretCode()}");
 
                         // Create the HTML body part
                         var bodyBuilder = new MimeKit.BodyBuilder();
