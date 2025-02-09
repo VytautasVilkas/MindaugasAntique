@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/config";
+import { BASE_URL } from "../utils/Config";
 import axios from "axios";
 
 // Centralized Axios instance
