@@ -72,7 +72,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("https://mindaugasantique.lt", "https://api.mindaugasantique.cloud","http://46.202.191.24:3000","https://mindaugasantique.cloud")
+        policy.WithOrigins("https://localhost:5173","https://mindaugasantique.lt", "https://api.mindaugasantique.cloud","http://46.202.191.24:3000","https://mindaugasantique.cloud")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); 

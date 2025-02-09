@@ -268,11 +268,11 @@ public async Task<IActionResult> CreateOrder([FromBody] Order orderRequest)
             deliveryCommand.Parameters.AddWithValue("@Subtotal", orderRequest.DeliveryFee);
             await deliveryCommand.ExecuteNonQueryAsync();
         }
-
+        await transaction.CommitAsync();
         var pdfFile = await GenerateProFormaInvoice(newInvoiceNumber, userId);
         if (pdfFile == null)
         await SendThankYouEmail(EMAIL, newInvoiceNumber, pdfFile);
-        await transaction.CommitAsync();
+        
         return Ok(new { Message = "Užsakymas sėkmingai sukurtas", Uzsakymo_ID = orderId });
     }
     catch (Exception ex)
