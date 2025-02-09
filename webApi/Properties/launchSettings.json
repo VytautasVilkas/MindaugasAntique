@@ -12,7 +12,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "JWL_SECRET_CODE": "Your32ByteSecureKeyWithExactLength!",
         "ADMIN_SECRET_CODE":  "MindaugasTest1",
-
+        
 
       }
     }

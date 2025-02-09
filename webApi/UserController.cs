@@ -177,7 +177,7 @@ public class UserController : ControllerBase
 
                         // Create and configure the email message
                         var message = new MimeKit.MimeMessage();
-                        message.From.Add(new MimeKit.MailboxAddress("MindaugasAntiqueTest", "vytautasvilkas16@gmail.com"));
+                        message.From.Add(new MimeKit.MailboxAddress("MindaugasAntiqueTest", "mindaugasantique@gmail.com"));
                         message.To.Add(new MimeKit.MailboxAddress("", email));
                         message.Subject = "El.pašto patvirtinimas";
 
@@ -208,7 +208,7 @@ public class UserController : ControllerBase
                                 await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
 
                                 // Authenticate with Gmail
-                                await client.AuthenticateAsync("vytautasvilkas16@gmail.com", _secretManager.GetGoogleSecretCode());
+                                await client.AuthenticateAsync("mindaugasantique@gmail.com", _secretManager.GetGoogleSecretCode());
 
                                 // Send the email
                                 await client.SendAsync(message);
@@ -1053,7 +1053,7 @@ public class UserController : ControllerBase
 
                         // Create and configure the email message
                         var message = new MimeKit.MimeMessage();
-                        message.From.Add(new MimeKit.MailboxAddress("MindaugasAntique", "vytautasvilkas16@gmail.com"));
+                        message.From.Add(new MimeKit.MailboxAddress("MindaugasAntique", "mindaugasantique@gmail.com"));
                         message.To.Add(new MimeKit.MailboxAddress("", email));
                         message.Subject = "El.pašto patvirtinimas";
 
@@ -1084,7 +1084,7 @@ public class UserController : ControllerBase
                                 await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
 
                                 // Authenticate with Gmail
-                                await client.AuthenticateAsync("vytautasvilkas16@gmail.com", _secretManager.GetGoogleSecretCode());
+                                await client.AuthenticateAsync("mindaugasantique@gmail.com", _secretManager.GetGoogleSecretCode());
 
                                 // Send the email
                                 await client.SendAsync(message);
