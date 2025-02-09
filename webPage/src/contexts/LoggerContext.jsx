@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/config";
+import { BASE_URL } from "../utils/Config";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const LoggerContext = createContext();
