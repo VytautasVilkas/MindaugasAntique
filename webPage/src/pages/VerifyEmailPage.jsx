@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "../dialogBox/Modal";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL } from "../utils/Config";
 function VerifyEmailPage() {
   const [searchParams] = useSearchParams();
   const [statusMessage, setStatusMessage] = useState("Tikrinama...");

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL } from "../utils/Config";
 const ResendVerificationPage = () => {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");

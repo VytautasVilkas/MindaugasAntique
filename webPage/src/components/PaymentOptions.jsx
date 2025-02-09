@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL } from "../utils/Config";
 
 
 function PaymentOptions({ paymentMethod, setPaymentMethod, deliveryType }) {
